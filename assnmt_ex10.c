@@ -57,10 +57,10 @@ int main()
 	float cons;
 	
 	K = (double**) malloc(4*sizeof(double *));    
-    for (i = 0; i < 4; i++)
-    {
-        K[i] = (double*) malloc(4*sizeof(double));
-    }
+    	for (i = 0; i < 4; i++)
+    	{
+        	K[i] = (double*) malloc(4*sizeof(double));
+    	}
 	//display(I,2,2);
 			
 	printf("\n Enter k1 : ");
@@ -95,30 +95,30 @@ int main()
 	cons = k1/l1;
 	//printf("%.2f \n",cons);
 	kt1 = (double**) malloc(2*sizeof(double *));    
-    for (i = 0; i < 2; i++)
-    {
-        kt1[i] = (double*) malloc(2*sizeof(double));
-    }	
+    	for (i = 0; i < 2; i++)
+    	{
+        	kt1[i] = (double*) malloc(2*sizeof(double));
+    	}	
 	ele_conduc_mat(kt1,cons,I,2,2);
 	display(kt1,2,2);
 	
 	cons = k2/l2;
 	//printf("%.2f \n",cons);
 	kt2 = (double**) malloc(2*sizeof(double *));    
-    for (i = 0; i < 2; i++)
-    {
-        kt2[i] = (double*) malloc(2*sizeof(double));
-    }
+    	for (i = 0; i < 2; i++)
+    	{
+        	kt2[i] = (double*) malloc(2*sizeof(double));
+    	}
 	ele_conduc_mat(kt2,cons,I,2,2);
 	display(kt2,2,2);
 	
 	cons = k3/l3;
 	//printf("%.2f \n",cons);
 	kt3 = (double**) malloc(2*sizeof(double *));    
-    for (i = 0; i < 2; i++)
-    {
-        kt3[i] = (double*) malloc(2*sizeof(double));
-    }
+    	for (i = 0; i < 2; i++)
+    	{
+        	kt3[i] = (double*) malloc(2*sizeof(double));
+    	}
 	ele_conduc_mat(kt3,cons,I,2,2);
 	display(kt3,2,2);
 	
