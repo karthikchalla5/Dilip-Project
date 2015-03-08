@@ -105,20 +105,20 @@ int main()
 	double INV[3][3],det=0.0;
 	
 	K = (double**) calloc(4,sizeof(double *));    
-    for (i = 0; i < 4; i++)
-    {
-        K[i] = (double*) calloc(4,sizeof(double));
-    }
-    
+	for (i = 0; i < 4; i++)
+	{
+	K[i] = (double*) calloc(4,sizeof(double));
+	}
+	
 	A = (double**) calloc(3,sizeof(double *));    
-    for (i = 0; i < 3; i++)
-    {
-        A[i] = (double*) calloc(3,sizeof(double));
-    }
-	    
-    R = (double*) calloc(4,sizeof(double *));    
-    
-    				
+	for (i = 0; i < 3; i++)
+	{
+	A[i] = (double*) calloc(3,sizeof(double));
+	}
+	
+	R = (double*) calloc(4,sizeof(double *));    
+	
+	    		
 	printf("\n Enter k1 : ");
 	fflush(stdin);
 	scanf("%f",&k1);
@@ -143,7 +143,7 @@ int main()
 	printf("\n Enter h : ");
 	fflush(stdin);
 	scanf("%lf",&h);
-
+	
 	printf("\n Enter T : ");	
 	fflush(stdin);
 	scanf("%lf",&t);		
@@ -166,29 +166,29 @@ int main()
 	
 	cons = k1/l1;	
 	kt1 = (double**) malloc(2*sizeof(double *));    
-    for (i = 0; i < 2; i++)
-    {
-        kt1[i] = (double*) malloc(2*sizeof(double));
-    }	
+	for (i = 0; i < 2; i++)
+	{
+	kt1[i] = (double*) malloc(2*sizeof(double));
+	}	
 	ele_conduc_mat(kt1,cons,I,2,2);
 	conv_matrix(kt1,h);
 	display("kt1",kt1,2,2);
 	
 	cons = k2/l2;	
 	kt2 = (double**) malloc(2*sizeof(double *));    
-    for (i = 0; i < 2; i++)
-    {
-        kt2[i] = (double*) malloc(2*sizeof(double));
-    }
+	for (i = 0; i < 2; i++)
+	{
+	kt2[i] = (double*) malloc(2*sizeof(double));
+	}
 	ele_conduc_mat(kt2,cons,I,2,2);
 	display("kt2",kt2,2,2);
 	
 	cons = k3/l3;	
 	kt3 = (double**) malloc(2*sizeof(double *));    
-    for (i = 0; i < 2; i++)
-    {
-        kt3[i] = (double*) malloc(2*sizeof(double));
-    }
+	for (i = 0; i < 2; i++)
+	{
+	kt3[i] = (double*) malloc(2*sizeof(double));
+	}
 	ele_conduc_mat(kt3,cons,I,2,2);
 	display("kt3",kt3,2,2);
 	
@@ -197,59 +197,59 @@ int main()
 	
 	C = max(K,4,4);
 	//printf("%lf",C);
-		
+	
 	temp = h*t;    	
-    R[0] = temp;
-    R[1] = 0;
-    R[2] = 0;
-    R[3] = C*T[3];		    	
+	R[0] = temp;
+	R[1] = 0;
+	R[2] = 0;
+	R[3] = C*T[3];		    	
 	
 	for(i=0;i<3;i++)
 	{	
-		for(j=0;j<3;j++)		
- 			A[i][j]=(K[(i+1)%3][(j+1)%3]*K[(i+2)%3][(j+2)%3]) - (K[(i+1)%3][(j+2)%3]*K[(i+2)%3][(j+1)%3]); 
+	for(j=0;j<3;j++)		
+	 	A[i][j]=(K[(i+1)%3][(j+1)%3]*K[(i+2)%3][(j+2)%3]) - (K[(i+1)%3][(j+2)%3]*K[(i+2)%3][(j+1)%3]); 
 	}
 	
 	for(i=0;i<3;i++)
-		det+=K[i][0]*A[i][0];  
+	det+=K[i][0]*A[i][0];  
 	
 	printf("\n\n\n"); 
 	
 	if(det==0) 
 	{  
-		printf("SINGULAR MATRIX !\nCANNOT FIND THE SOLUTION\n\n\tPress any key to exit.");
-		getch(); 
-		exit(1); 
+	printf("SINGULAR MATRIX !\nCANNOT FIND THE SOLUTION\n\n\tPress any key to exit.");
+	getch(); 
+	exit(1); 
 	}
 	
 	for(i=0;i<2;i++)
 	{
-		for(j=i+1;j<3;j++)
-			swap(&A[i][j], &A[j][i]); 
+	for(j=i+1;j<3;j++)
+		swap(&A[i][j], &A[j][i]); 
 	} 
 	for(i=0;i<3;i++)
 	{ 
-		for(j=0;j<3;j++)
-			INV[i][j]=A[i][j]/det; 
+	for(j=0;j<3;j++)
+		INV[i][j]=A[i][j]/det; 
 	}
-
+	
 	for(i=0;i<3;i++) 
 	{ 
-		T[i]=0.0;
-		for(j=0;j<3;j++)
-		{
-			T[i]+=INV[i][j]*R[j];
-		} 
+	T[i]=0.0;
+	for(j=0;j<3;j++)
+	{
+		T[i]+=INV[i][j]*R[j];
+	} 
 	}
 	
 	for(i=0;i<4;i++)
 	{
-		printf("\n");
-		for(j=0;j<4;j++)
-		{
-			printf(" |\t %lf\t ",K[i][j]);
-		}
-		printf("|\t |\t T%d\t |\t |\t %lf\t |",i+1,R[i]);
+	printf("\n");
+	for(j=0;j<4;j++)
+	{
+		printf(" |\t %lf\t ",K[i][j]);
+	}
+	printf("|\t |\t T%d\t |\t |\t %lf\t |",i+1,R[i]);
 	}
 	
 	printf("\n\n \tT1=%.2lf \tT2=%.2lf \tT3=%.2lf \tT4=%.2lf",T[0],T[1],T[2],T[3]);
